@@ -1,0 +1,13 @@
+<mat-toolbar style="background-color: white;">
+    <img style="margin: 0 auto;" src="/assets/sahanadara_logo.png" alt="">
+</mat-toolbar>
+<mat-toolbar color="primary">
+    <div style="margin: 0 auto;" >
+      <a mat-button [routerLink]="'/dashboard'"> Dashboard </a>
+      <a mat-button [routerLink]="'/list-relief-requests'"> Relief Requests </a>
+      <a mat-button [routerLink]="'/manage-reliefs'"> Manage Reliefs </a>
+      <a mat-button [routerLink]="'/reports'"> Reports </a>
+      <a mat-button [routerLink]="'/user-management'"> User Management </a>
+    </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,61 @@
+<div class="table-container">
+    <mat-card style="width: 80%; margin: 0 auto;">
+        <h2 style="display: inline;">Relief Requests</h2>
+        <button style="float: right;" mat-flat-button color="primary" [routerLink]="'/add-relief'" aria-label="Provide a Relief">
+           <mat-icon>favorite</mat-icon> Provide a Relief
+        </button>
+
+        <mat-spinner style="margin:50px auto;" diameter="30" *ngIf="reliefRequests.length === 0"></mat-spinner>
+        <mat-table *ngIf="reliefRequests.length !== 0" #table [dataSource]="reliefRequests" style="margin:10px auto;">
+            <ng-container matColumnDef="selection">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <mat-checkbox></mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+              <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="associatedIncident">
+                <mat-header-cell *matHeaderCellDef> Incident </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.associatedIncident.name}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="location">
+                <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.location.latitude}} ,  {{element.location.longitude}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="user">
+                <mat-header-cell *matHeaderCellDef> Requested By </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.requestingUser.name}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="contact">
+                <mat-header-cell *matHeaderCellDef> Contact Number </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.requestingUser.contactNumber}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="expandedDetail">
+                <mat-cell *matCellDef="let detail"> {{detail.element.description}} </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"
+                matRipple 
+                class="element-row" 
+                [class.expanded]="expandedElement == row"
+                (click)="expandedElement==row?expandedElement=null:expandedElement=row"></mat-row>
+            <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow" 
+                [@detailExpand]="row.element == expandedElement ? 'expanded' : 'collapsed'"
+                style="overflow: hidden; padding-left: 50px;">
+            </mat-row>
+        </mat-table>
+
+        <div style="height: 30px;"></div>
+    </mat-card>
+</div>
+
