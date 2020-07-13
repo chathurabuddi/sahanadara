@@ -9,7 +9,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class DataService {
 
-  private SAHANADARA_API_SERVER = 'http://localhost:8080';
+  private SAHANADARA_API_SERVER = 'http://localhost:8080/sahanadara-api';
 
   constructor(private httpClient: HttpClient) { }
 
