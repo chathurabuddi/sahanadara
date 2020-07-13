@@ -15,3 +15,9 @@
 5. Navigate to the _sahanadara-ui_ module and run `npm install` to install project dependancies.
 6. Execute `ng serve` to run the application. application will be start at `http://localhost:4200`
 7. Alternatively you can execute `ng build --prod` to generate deployment artifacts from the _sahanadara-ui_ module.
+
+### Deploy to a tomcat server
+1. Download _sahanadara-api.war_ and _sahanadara-ui.zip_ from https://github.com/chathurabuddi/sahanadara/releases
+2. Extract the content of _sahanadara-ui.zip_ to the _<TOMCAT_HOME>/webapps_ directory.
+3. Copy _sahanadara-api.war_ to the _<TOMCAT_HOME>/webapps_ directory.
+4. Start the server
